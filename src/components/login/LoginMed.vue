@@ -1,28 +1,38 @@
 <script setup>
-// import { reactive } from "vue";
-// import { useAuth } from '@/stores/user'
-// import { useRouter } from "vue-router";
+import { onMounted, reactive } from "vue";
+import { useAuth } from '@/stores/user'
+import { useRouter } from "vue-router";
 
-// const router = useRouter()
-// const auth = useAuth()
+const router = useRouter()
+const auth = useAuth()
 
 const dataLogin = reactive({
-    email: '',
-    password: ''
+    email: 'moroni@gmail.com',
+    password: 'moronipereira'
 })
 
-// async function realizarLogin() {
-//     await auth.login({
-//         email: dataLogin.email,
-//         password: dataLogin.password
-//     })
+async function realizarLogin() {
+    try {
+        await auth.login({
+            email: dataLogin.email,
+            password: dataLogin.password
+        })
+    } catch (error) {
+        console.log(error)
+    }
 
-//     console.log('auth is aut', auth.isAuthenticated)
-//     if ( auth.isAuthenticated ) {
-//         router.push('/inicio')
-//     }
-// }
+    console.log('auth is aut', auth.isAuthenticated)
+    if ( auth.isAuthenticated ) {
+        router.push({path: '/inicio'})
+    }
+}
 
+onMounted(() => {
+    if ( auth.isAuthenticated ) {
+        console.log('auth is aut', auth.isAuthenticated)
+        router.push('/inicio')
+    }
+})
 </script>
 
 <template>
@@ -35,7 +45,7 @@ const dataLogin = reactive({
         </div>
 
         <div>
-            <div class="formulario-itens-alinhamento">
+            <form class="formulario-itens-alinhamento" @submit.prevent="onSubmit">
                 <div class="form-contato">
                     <label for="CPF"><strong>E-mail</strong></label>
                     <br>
@@ -58,7 +68,7 @@ const dataLogin = reactive({
                     </span>
                 </div>
                 
-            </div>
+            </form>
             <div class="icones-media">
                 <i class="bi bi-instagram"></i>
                 <i class="bi bi-facebook"></i>
