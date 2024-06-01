@@ -7,8 +7,8 @@ const router = useRouter()
 const auth = useAuth()
 
 const dataLogin = reactive({
-    email: 'moroni@gmail.com',
-    password: 'moronipereira'
+    email: 'jonas@gmail.com',
+    password: 'teste1'
 })
 
 async function realizarLogin() {

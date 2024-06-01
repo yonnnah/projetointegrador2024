@@ -41,7 +41,7 @@ export const useConsulta = defineStore('useConsulta', () => {
             realizada: 0
         }
         try {
-            await http.put(`/consulta/${id}`)
+            await http.put(`/consulta/${newValue.id}`, body)
             await setConsultas()
         } catch (error) {
             console.log(error)

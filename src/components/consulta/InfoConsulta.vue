@@ -49,6 +49,7 @@ onMounted(async () => {
 }
 a {
     cursor: pointer;
+    color: black;
 }
 
 .content {
@@ -75,6 +76,7 @@ p {
 
 .bi-trash {
     margin-right: 15px;
+    cursor: pointer;
 }
 button {
     display: flex;

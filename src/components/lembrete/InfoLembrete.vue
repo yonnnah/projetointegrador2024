@@ -1,32 +1,24 @@
 <script setup>
+import { useLembrete } from '@/stores/lembrete'; 
+import { onBeforeMount } from 'vue';
+
+const dataLembrete = useLembrete()
+
+async function deleteLembrete(id) {
+    await dataLembrete.delLembretes(id)
+}
+
+onBeforeMount(async () => {
+    await dataLembrete.setLembretes()
+})
 </script>
 
 <template>
     <div class="container">
-        <div class="content">
-            <p>Remédio de pressão 11:00</p>
+        <div class="content" v-for="lembrete, index in dataLembrete.lembretes" :key="index">
+            <p>{{ lembrete.title }} {{ lembrete.data === "allday" ? "todos os dias" : lembrete.data }} {{ lembrete.hora }}</p>
             <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-trash"></i>
-        </div>
-        <div class="content">
-            <p>Medir glicose 11:20</p>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-trash"></i>
-        </div>
-        <div class="content">
-            <p>Caminhada 16:30</p>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-trash"></i>
-        </div>
-        <div class="content">
-            <p>Bonviva 150mg Roche 18:00</p>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-trash"></i>
-        </div>
-        <div class="content">
-            <p>Remédio de pressão 23:00</p>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-trash"></i>
+            <i class="bi bi-trash" @click="deleteLembrete(lembrete.id)"></i>
         </div>
     </div>
 </template>
@@ -61,7 +53,6 @@
 p {
     color: var(--cor-fonte);
     width: 100%;
-    height: 47px;
     line-height: 47px;
     padding-left: 20px;
 }
