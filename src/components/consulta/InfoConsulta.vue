@@ -20,9 +20,9 @@ onMounted(async () => {
     <div class="container">
         <div class="content" v-for="consulta, index in dataConsulta.consultas" :key="index">
             <p>{{ consulta.especialidade + ' ' + consulta.data + ' ' +  consulta.hora }}</p>
-            <route-link :to="`/conta/editar-consulta/${consulta.id}`">
+            <router-link :to="`/conta/editar-consulta/${consulta.id}`">
                 <i class="bi bi-pencil-square"></i>
-            </route-link>
+            </router-link>
 
             <i class="bi bi-trash" 
                 @click="deleteConsulta(consulta.id)" 

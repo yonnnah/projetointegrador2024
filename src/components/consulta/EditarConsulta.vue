@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, onMounted, reactive, ref } from 'vue';
+import { onBeforeMount, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useConsulta } from '@/stores/consulta';
 
@@ -7,19 +7,22 @@ const dataConsulta = useConsulta()
 const route = useRoute()
 const loading = ref(false)
 
-// const newData = reactive({
-//     especialidade: dataConsulta.consulta.especialidade,
-//     data: dataConsulta.consulta.data,
-//     hora: dataConsulta.consulta.hora
-// })
+const newData = reactive({
+    especialidade: '',
+    data: '',
+    hora: ''
+})
 
 async function editarConsulta() {
     loading.value = true
     await dataConsulta.editConsulta(newData)
     loading.value = false
 }
-onMounted( async () => {
+onBeforeMount( async () => {
     await dataConsulta.getConsulta(route.params.id)
+    newData.especialidade = dataConsulta.consulta.especialidade
+    newData.data = dataConsulta.consulta.data
+    newData.hora = dataConsulta.consulta.hora
 })
 </script>
 
@@ -27,7 +30,7 @@ onMounted( async () => {
     <div class="container">
         <div class="content">
             <span>Especialidade</span>
-            <input type="text" v-model="newData.especialista">
+            <input type="text" v-model="newData.especialidade">
         </div>
         <div class="content-diferente">
             <div class="content">

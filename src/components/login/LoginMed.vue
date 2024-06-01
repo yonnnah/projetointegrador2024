@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive } from "vue";
+import { onBeforeMount, reactive } from "vue";
 import { useAuth } from '@/stores/user'
 import { useRouter } from "vue-router";
 
@@ -7,8 +7,8 @@ const router = useRouter()
 const auth = useAuth()
 
 const dataLogin = reactive({
-    email: 'jonas@gmail.com',
-    password: 'teste1'
+    email: 'moroni@gmail.com',
+    password: 'moronipereira'
 })
 
 async function realizarLogin() {
@@ -27,7 +27,7 @@ async function realizarLogin() {
     }
 }
 
-onMounted(() => {
+onBeforeMount(() => {
     if ( auth.isAuthenticated ) {
         console.log('auth is aut', auth.isAuthenticated)
         router.push('/conta/inicio')
