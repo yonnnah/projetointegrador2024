@@ -9,6 +9,7 @@ const route = useRoute()
 <template>
   <div>
     <HeaderMed v-if="
+      route.path !== '/' &&
       route.path !== '/login' &&
       route.path !== '/cadastro'
     "/>
@@ -19,6 +20,7 @@ const route = useRoute()
     />
     
     <FooterNav v-if="
+      route.path !== '/' &&
       route.path !== '/login' &&
       route.path !== '/cadastro'"
       class="footer" 

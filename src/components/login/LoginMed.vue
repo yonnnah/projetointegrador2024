@@ -7,8 +7,8 @@ const router = useRouter()
 const auth = useAuth()
 
 const dataLogin = reactive({
-    email: 'moroni@gmail.com',
-    password: 'moronipereira'
+    email: 'jonas@gmail.com',
+    password: 'teste1'
 })
 
 async function realizarLogin() {
@@ -23,14 +23,14 @@ async function realizarLogin() {
 
     console.log('auth is aut', auth.isAuthenticated)
     if ( auth.isAuthenticated ) {
-        router.push({path: '/inicio'})
+        router.push({path: '/conta/inicio'})
     }
 }
 
 onMounted(() => {
     if ( auth.isAuthenticated ) {
         console.log('auth is aut', auth.isAuthenticated)
-        router.push('/inicio')
+        router.push('/conta/inicio')
     }
 })
 </script>

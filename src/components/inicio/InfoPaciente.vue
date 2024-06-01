@@ -1,5 +1,8 @@
 <script setup>
 import FotoPaciente from "@/components/inicio/FotoPaciente.vue";
+import { useAuth } from "@/stores/user";
+
+const auth = useAuth()
 </script>
 
 <template>
@@ -9,23 +12,23 @@ import FotoPaciente from "@/components/inicio/FotoPaciente.vue";
         </div>
         <div class="content">
             <span>Nome</span>
-            <p>Octávio Carvalho de Oliveira</p>
+            <p>{{ auth.usuario.name }}</p>
         </div>
         <div class="content">
             <span>E-mail</span>
-            <p>octaviocarvalhooliveira@gmail.com</p>
+            <p>{{ auth.usuario.email }}</p>
         </div>
         <div class="content">
             <span>Nascimento</span>
-            <p>15/08/1952</p>
+            <p>{{ auth.usuario.birthdate }}</p>
         </div>
         <div class="content">
             <span>Sexo</span>
-            <p>Masculino</p>
+            <p>{{ auth.usuario.gender }}</p>
         </div>
         <div class="content">
             <span>Plano</span>
-            <p>Silver</p>
+            <p>{{ auth.usuario.plan }}</p>
         </div>
     </div>
 </template>

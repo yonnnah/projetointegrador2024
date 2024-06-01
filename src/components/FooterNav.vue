@@ -4,30 +4,26 @@
 
 <template>
     <footer class="container">
-        <button>
-            Ligar para o médico
-            <i class="bi bi-telephone-fill"></i>
-        </button>
         <div>
-            <router-link to="/inicio">
+            <router-link to="/conta/inicio">
                 <div class="alinhamento-text-funcoes">
                     <i class="bi bi-house-fill"></i>
                     <p>Início</p>
                 </div>
             </router-link>
-            <router-link to="/consulta">
+            <router-link to="/conta/consulta">
                 <div class="alinhamento-text-funcoes">
                     <i class="bi bi-calendar3"></i>
                     <p>Consultas</p>
                 </div>
             </router-link>
-            <router-link to="/historico">
+            <router-link to="/conta/historico">
                 <div class="alinhamento-text-funcoes">
                     <i class="bi bi-journal-text diferente"></i>
                     <p>Histórico</p>
                 </div>
             </router-link>
-            <router-link to="/lembrete">
+            <router-link to="/conta/lembrete">
                 <div class="alinhamento-text-funcoes">
                     <i class="bi bi-bell"></i>
                     <p>Lembrete</p>
@@ -50,24 +46,6 @@
     justify-content: space-evenly;
     gap: 0 5%;
     align-items: center;
-}
-button {
-    display: flex;
-    align-items: center;
-    height: 40px;
-    width: 70%;
-    justify-content: space-evenly;
-    border-radius: 20px;
-    outline: none;
-    border: none;
-    color: white;
-    background-color: var(--cor-principal);
-    font-size: 1.2rem;
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    bottom: 110px;
-    transform: translateX(-50%);
 }
 .bi {
     font-size: 4em;
