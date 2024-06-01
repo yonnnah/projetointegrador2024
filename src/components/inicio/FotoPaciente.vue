@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     justify-items: center;
-    padding: 20px 0;
+    /* padding: 20px 0; */
 }
 .container img {
     border-radius: 50%;

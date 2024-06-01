@@ -30,6 +30,10 @@ const auth = useAuth()
             <span>Plano</span>
             <p>{{ auth.usuario.plan }}</p>
         </div>
+        <button onclick="window.location.href='tel:+62999999999'">
+            Ligar para o médico
+            <i class="bi bi-telephone-fill"></i>
+        </button>
     </div>
 </template>
 
@@ -57,7 +61,6 @@ const auth = useAuth()
     font-weight: bold;
     color: black;
 }
-
 p {
     color: var(--cor-fonte);
     width: 100%;
@@ -66,5 +69,25 @@ p {
     border-radius: 10px;
     line-height: 40px;
     padding-left: 20px;
+}
+button {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 70%;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: var(--cor-principal);
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    bottom: -40px;
+    transform: translateX(-50%);
+    z-index: 1;
+    cursor: pointer;
 }
 </style>

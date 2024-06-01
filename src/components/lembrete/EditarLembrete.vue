@@ -2,40 +2,41 @@
 import { onBeforeMount, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useRouter } from 'vue-router';
-import { useConsulta } from '@/stores/consulta';
+import { useLembrete } from '@/stores/lembrete';
 
-const dataConsulta = useConsulta()
+const dataLembrete = useLembrete()
 const route = useRoute()
 const router = useRouter()
 const loading = ref(false)
 
 const newData = reactive({
     id: route.params.id,
-    especialidade: '',
+    title: '',
     data: '',
     hora: ''
 })
 
-async function editarConsulta() {
+async function editarLembrete() {
     loading.value = true
-    await dataConsulta.editConsulta(newData)
+    newData.data === "todos os dias" ? "allday" : newData.data
+    await dataLembrete.editLembrete(newData)
     loading.value = false
-    router.push('/conta/consulta')
+    router.push('/conta/lembrete')
 }
 onBeforeMount( async () => {
-    await dataConsulta.getConsulta(route.params.id)
-    newData.especialidade = dataConsulta.consulta.especialidade
-    newData.data = dataConsulta.consulta.data
-    newData.hora = dataConsulta.consulta.hora
+    await dataLembrete.getLembrete(route.params.id)
+    newData.title = dataLembrete.lembrete.title
+    newData.data = dataLembrete.lembrete.data === "allday" ? "todos os dias" : dataLembrete.lembrete.data
+    newData.hora = dataLembrete.lembrete.hora
 })
 </script>
 
 <template>
     <div class="container">
-        <div v-if="dataConsulta.consulta">
+        <div v-if="dataLembrete.lembrete">
             <div class="content">
-                <span>Especialidade</span>
-                <input type="text" v-model="newData.especialidade">
+                <span>Lembrete</span>
+                <input type="text" v-model="newData.title">
             </div>
             <div class="content-diferente">
                 <div class="content">
@@ -44,20 +45,20 @@ onBeforeMount( async () => {
                 </div>
                 <div class="content">
                     <span>Hora</span>
-                    <input type="time" v-model="newData.hora">
+                    <input type="text" v-model="newData.hora">
                 </div>
             </div>
             <button 
-                @click="editarConsulta"
+                @click="editarLembrete"
                 :disabled="loading"
             >
                 Salvar alterações
             </button>
         </div>
-        <div v-if="!dataConsulta.consulta">
-            <span>Consulta nao encontrada</span>
-            <router-link to="/conta/consulta">
-                <span>BOTAO: AJEITAR: ir para consulta</span>
+        <div v-if="!dataLembrete.lembrete">
+            <span>Lembrete nao encontrada</span>
+            <router-link to="/conta/lembrete">
+                <span>BOTAO: AJEITAR: ir para consutla</span>
             </router-link>
         </div>
     </div>

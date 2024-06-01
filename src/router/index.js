@@ -54,6 +54,12 @@ const router = createRouter({
           meta: { requiresAuth: true },
           component: () => import('../views/NovoLembreteView.vue')
         },
+        {
+          path: 'editar-lembrete/:id',
+          name: 'editar lembrete',
+          meta: { requiresAuth: true },
+          component: () => import('../views/EditarLembrete.vue')
+        },
       ]
     },
     {

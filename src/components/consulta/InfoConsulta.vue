@@ -29,9 +29,11 @@ onMounted(async () => {
                 :disabled="loading"
             ></i>
         </div>
-        <button>
-            Nova Consulta
-        </button>
+        <router-link to="/conta/nova-consulta">
+                <button>
+                    Nova Consulta
+                </button>
+        </router-link>
     </div>
 </template>
 
@@ -69,9 +71,8 @@ a {
 p {
     color: var(--cor-fonte);
     width: 100%;
-    height: 47px;
     line-height: 47px;
-    padding-left: 20px;
+    padding: 0 20px;
 }
 
 .bi-trash {
@@ -93,8 +94,9 @@ button {
     font-weight: bold;
     position: absolute;
     left: 50%;
-    bottom: 110px;
+    bottom: 112px;
     transform: translateX(-50%);
     z-index: 1;
+    cursor: pointer;
 }
 </style>

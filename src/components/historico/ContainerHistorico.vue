@@ -26,18 +26,15 @@
     padding: 20px;
     border-bottom: 2px solid #dad5db;
 }
-
 .container > i {
     font-size: 39px;
 }
-
 .container div {
     display: flex;
     flex-direction: column;
     display: flex;
     gap: 10px;
 }
-
 span {
     display: flex;
     font-family: Roboto;
