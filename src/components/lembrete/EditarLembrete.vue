@@ -45,7 +45,7 @@ onBeforeMount( async () => {
                 </div>
                 <div class="content">
                     <span>Hora</span>
-                    <input type="text" v-model="newData.hora">
+                    <input type="time" v-model="newData.hora">
                 </div>
             </div>
     

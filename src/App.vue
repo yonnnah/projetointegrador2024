@@ -11,7 +11,7 @@ const route = useRoute()
     <HeaderMed v-if="
       route.path !== '/' &&
       route.path !== '/login' &&
-      route.path !== '/cadastro/'
+      route.path !== '/cadastro'
     "/>
 
     <RouterView 
@@ -22,7 +22,7 @@ const route = useRoute()
     <FooterNav v-if="
       route.path !== '/' &&
       route.path !== '/login' &&
-      route.path !== '/cadastro/'"
+      route.path !== '/cadastro'"
       class="footer" 
     />
   </div>
