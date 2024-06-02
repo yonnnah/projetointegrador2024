@@ -48,6 +48,7 @@ onBeforeMount( async () => {
                     <input type="text" v-model="newData.hora">
                 </div>
             </div>
+    
             <button 
                 @click="editarLembrete"
                 :disabled="loading"
@@ -55,12 +56,12 @@ onBeforeMount( async () => {
                 Salvar alterações
             </button>
         </div>
-        <div v-if="!dataLembrete.lembrete">
+        <!-- <div v-if="!dataLembrete.lembrete">
             <span>Lembrete nao encontrada</span>
             <router-link to="/conta/lembrete">
                 <span>BOTAO: AJEITAR: ir para consutla</span>
             </router-link>
-        </div>
+        </div> -->
     </div>
 </template>
 
