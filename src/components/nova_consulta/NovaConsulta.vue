@@ -1,4 +1,27 @@
 <script setup>
+import { useConsulta } from '@/stores/consulta';
+import { ref, reactive } from 'vue';
+import { useRouter } from 'vue-router';
+
+const dataConsulta = useConsulta();
+const router = useRouter();
+const loading = ref(false)
+const newConsulta = reactive({
+  especialidade: '',
+  data: '',
+  hora: '',
+});
+const error = ref(null);
+
+async function submitForm() {
+  try {
+    await dataConsulta.addConsulta(newConsulta);
+    router.push('/conta/consulta');
+  } catch (erro) {
+    console.log(erro)
+    error.value = erro.response ? erro.response.data : 'Erro ao agendar consulta';
+  }
+}
 </script>
 
 <template>
@@ -6,19 +29,22 @@
         <div>
             <div class="content">
                 <span>Especialidade</span>
-                <input type="text">
+                <input type="text" v-model="newConsulta.especialidade">
             </div>
             <div class="content-diferente">
                 <div class="content">
                     <span>Data</span>
-                    <input type="text">
+                    <input type="text" v-model="newConsulta.data" placeholder="00/00/0000">
                 </div>
                 <div class="content">
                     <span>Hora</span>
-                    <input type="time">
+                    <input type="time" v-model="newConsulta.hora">
                 </div>
             </div>
-            <button>
+            <button 
+                @click="submitForm"
+                :disabled="loading"
+            >
                 Nova consulta
             </button>
         </div>

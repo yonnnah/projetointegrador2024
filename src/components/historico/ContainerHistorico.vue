@@ -11,7 +11,7 @@
             <h5>Prescrição</h5>
             <p> - Bonviva 150mg Roche 1 comprimido.</p>
         </div>
-        <span>15/02/2024</span>
+        <span>15/05/2024</span>
     </div>
 </template>
 

@@ -56,12 +56,6 @@ onBeforeMount( async () => {
                 Salvar alterações
             </button>
         </div>
-        <!-- <div v-if="!dataLembrete.lembrete">
-            <span>Lembrete nao encontrada</span>
-            <router-link to="/conta/lembrete">
-                <span>BOTAO: AJEITAR: ir para consutla</span>
-            </router-link>
-        </div> -->
     </div>
 </template>
 

@@ -7,6 +7,23 @@ export const useAuth = defineStore('useAuth', () => {
   const getUser = localStorage.getItem('user')
   const usuario = ref(getUser ? JSON.parse(getUser) : null)
 
+  async function cadastro(dados) {
+    const body = {
+      nome: dados.nome,
+      email: dados.email,
+      nascimento: dados.nascimento,
+      genero: dados.genero,
+      plano: 'silver',
+      password: dados.password
+    }
+
+    try {
+      const { data } = await http.post('/register', body)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   async function login(dados) {
     const body = {
       email: dados.email,
@@ -42,6 +59,7 @@ export const useAuth = defineStore('useAuth', () => {
   return {
     usuario,
     login,
+    cadastro,
     isAuthenticated
   }
 })

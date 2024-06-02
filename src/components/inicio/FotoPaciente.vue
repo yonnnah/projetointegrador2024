@@ -12,12 +12,11 @@
     display: flex;
     justify-content: center;
     justify-items: center;
-    /* padding: 20px 0; */
 }
 .container img {
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    /* border: 5px solid var(--cor-principal); */
+    border: 5px solid var(--cor-principal);
 }
 </style>

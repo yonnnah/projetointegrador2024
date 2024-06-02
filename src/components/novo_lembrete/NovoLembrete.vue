@@ -1,4 +1,27 @@
 <script setup>
+import { useLembrete } from '@/stores/lembrete';
+import { ref, reactive } from 'vue';
+import { useRouter } from 'vue-router';
+
+const dataLembrete = useLembrete();
+const router = useRouter();
+const loading = ref(false)
+const newLembrete = reactive({
+  title: '',
+  data: '',
+  hora: '',
+});
+const error = ref(null);
+
+async function submitForm() {
+  try {
+    await dataLembrete.addLembrete(newLembrete);
+    router.push('/conta/lembrete');
+  } catch (erro) {
+    console.log(erro)
+    error.value = erro.response ? erro.response.data : 'Erro ao agendar lembrete';
+  }
+}
 </script>
 
 <template>
@@ -6,19 +29,22 @@
         <div>
             <div class="content">
                 <span>Novo Lembrete</span>
-                <input type="text">
+                <input type="text" v-model="newLembrete.title">
             </div>
             <div class="content-diferente">
                 <div class="content">
                     <span>Data</span>
-                    <input type="text">
+                    <input type="text" v-model="newLembrete.data" placeholder="00/00/0000">
                 </div>
                 <div class="content">
                     <span>Hora</span>
-                    <input type="time">
+                    <input type="time" v-model="newLembrete.hora">
                 </div>
             </div>
-            <button>
+            <button 
+                @click="submitForm"
+                :disabled="loading"
+            >
                 Confirmar lembrete
             </button>
         </div>

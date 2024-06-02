@@ -7,8 +7,8 @@ const router = useRouter()
 const auth = useAuth()
 
 const dataLogin = reactive({
-    email: 'jonas@gmail.com',
-    password: 'teste1'
+    email: '',
+    password: ''
 })
 
 async function realizarLogin() {
@@ -47,7 +47,7 @@ onBeforeMount(() => {
         <div>
             <form class="formulario-itens-alinhamento" @submit.prevent="onSubmit">
                 <div class="form-contato">
-                    <label for="CPF"><strong>E-mail</strong></label>
+                    <label for="email"><strong>E-mail</strong></label>
                     <br>
                     <input type="email" v-model="dataLogin.email">
                 </div>

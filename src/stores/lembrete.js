@@ -46,6 +46,20 @@ export const useLembrete = defineStore('useLembrete', () => {
             console.log(error)
         } 
     }
+
+    async function addLembrete(newLembrete) {
+        const body = {
+            title: newLembrete.title,
+            data: newLembrete.data,
+            hora: newLembrete.hora
+        };
+        try {
+            await http.post('/notificacao', body);
+            await setLembretes();
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return {
         lembretes,
         lembrete,
@@ -53,5 +67,6 @@ export const useLembrete = defineStore('useLembrete', () => {
         getLembrete,
         delLembretes,
         editLembrete,
+        addLembrete
     }
 })

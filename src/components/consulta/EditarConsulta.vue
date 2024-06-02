@@ -40,7 +40,7 @@ onBeforeMount( async () => {
             <div class="content-diferente">
                 <div class="content">
                     <span>Data</span>
-                    <input type="text" v-model="newData.data">
+                    <input type="text" v-model="newData.data" placeholder="00/00/0000">
                 </div>
                 <div class="content">
                     <span>Hora</span>

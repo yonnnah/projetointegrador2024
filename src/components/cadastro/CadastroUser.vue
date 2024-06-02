@@ -1,4 +1,29 @@
 <script setup>
+import { onBeforeMount, reactive } from "vue";
+import { useAuth } from '@/stores/user';
+import { useRouter } from "vue-router";
+
+const router = useRouter()
+const auth = useAuth()
+
+const dataCadastro = reactive({
+    nome: '',
+    email: '',
+    nascimento: '',
+    genero: '',
+    password: ''
+})
+
+async function realizarCadastro() {
+    try {
+        await auth.cadastro(dataCadastro)
+    } catch (error) {
+        console.log(error)
+    }
+
+    console.log('auth is aut', auth.isAuthenticated)
+    router.push({path: '/login'})
+}   
 </script>
 
 <template>
@@ -6,35 +31,37 @@
         <div>
             <img src="/src/assets/img/logo-black.png" alt="">
         </div>
-        <div class="cadastro-form">
+        <div class="cadastro-form" @submit.prevent="onSubmit">
             <h1>Cadastro</h1>
             <form id="cadastroForm">
                 <div class="form-group">
                     <label for="name">Nome</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" v-model="dataCadastro.nome" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email"  v-model="dataCadastro.email" required>
                     </div>
                     <div class="form-group">
                         <label for="birthdate">Nascimento</label>
-                    <input type="date" id="birthdate" name="birthdate" required>
+                    <input type="text" id="birthdate" name="birthdate"  v-model="dataCadastro.nascimento" required>
                     </div>
                     <div class="form-group">
                         <label for="gender">Sexo</label>
-                    <select id="gender" name="gender" required>
+                    <select id="gender" name="gender"  v-model="dataCadastro.genero" required>
                         <option value="" disabled selected>Selecione</option>
-                        <option value="male">Masculino</option>
-                        <option value="female">Feminino</option>
-                        <option value="other">Outro</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
                     </select>
                     </div>
                     <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password"  v-model="dataCadastro.password" required>
                 </div>
-                <button type="submit">Cadastrar</button>
+                <button @click="realizarCadastro">
+                    Cadastrar
+                </button>
             </form>
         </div>
 </div>
