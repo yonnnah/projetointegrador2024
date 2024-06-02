@@ -47,12 +47,29 @@ export const useConsulta = defineStore('useConsulta', () => {
             console.log(error)
         } 
     }
+
+    async function addConsulta(newConsulta) {
+        const body = {
+            especialidade: newConsulta.especialidade,
+            data: newConsulta.data,
+            hora: newConsulta.hora,
+            realizada: 0
+        };
+        try {
+            await http.post('/consulta', body);
+            await setConsultas();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return {
         consultas,
         consulta,
         setConsultas,
         getConsulta,
         delConsultas,
-        editConsulta
+        editConsulta,
+        addConsulta
     }
 })

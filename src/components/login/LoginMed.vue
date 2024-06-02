@@ -63,9 +63,11 @@ onBeforeMount(() => {
                     >
                         <strong>Entrar</strong>
                     </button>
-                    <span>
-                        <span> Não tem uma conta? <p>cadastre-se.</p></span>
-                    </span>
+                    <!-- <span>
+                        <router-link :to="`/cadastro/`">
+                            <span> Não tem uma conta? <p>cadastre-se.</p></span>
+                        </router-link>
+                    </span> -->
                 </div>
                 
             </form>
@@ -130,6 +132,7 @@ onBeforeMount(() => {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 .botao-login-botao {
     background-color: var(--cor-botao-login);

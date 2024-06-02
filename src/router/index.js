@@ -44,7 +44,7 @@ const router = createRouter({
         },
         {
           path: 'editar-consulta/:id',
-          name: 'nova consulta',
+          name: 'editar consulta',
           meta: { requiresAuth: true },
           component: () => import('../views/EditarConsulta.vue')
         },
