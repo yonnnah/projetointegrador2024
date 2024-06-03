@@ -44,7 +44,7 @@ async function realizarCadastro() {
                     </div>
                     <div class="form-group">
                         <label for="birthdate">Nascimento</label>
-                    <input type="text" id="birthdate" name="birthdate"  v-model="dataCadastro.nascimento" required>
+                    <input type="text" id="birthdate" name="birthdate" placeholder="00/00/0000" v-model="dataCadastro.nascimento" required>
                     </div>
                     <div class="form-group">
                         <label for="gender">Sexo</label>
